@@ -18,7 +18,7 @@
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 #define MAX_DEPTH 5
-#define SAMPLES_PER_PIXEL 256
+#define SAMPLES_PER_PIXEL 1000
 #define EPSILON 0.0001f
 
 typedef enum { PLANE, CUBE } ObjectType;
@@ -181,7 +181,7 @@ int main(int argc, char** argv) {
             int rows_per_base_dist = SCREEN_HEIGHT / size_mpi;
             int remainder_rows_dist = SCREEN_HEIGHT % size_mpi;
 
-            for (int i = 0; i < size_mpi; i++) {
+            for (int i = size_mpi - 1; i >= 0; i--) {
                 int start_y =
                     i * rows_per_base_dist +
                     (i < remainder_rows_dist ? i : remainder_rows_dist);
